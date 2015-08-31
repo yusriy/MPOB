@@ -157,33 +157,28 @@ rm(x,y_down,y_up)
 
 jpeg(filename = "/Users/Yusri/Documents/Work/Data analysis/MPOB/figs/Rainfall_p.jpeg", 
      width=7200, height= 2500,res=360,family='serif')
-par(family = 'serif',mar=c(2,2,1,1),omi=c(0.9,0.9,0,0),mai = c(0.4,0.3, 0.1, 0.1),lwd=1.5)
+par(family = 'serif',mar=c(2,2,1,1),omi=c(0.9,0.9,0.5,0),mai = c(0.4,0.3, 0.1, 0.1),lwd=1.5)
 
 barplot(data_group2$rain,cex.axis=1.6,col='white',ylim=c(0,280),
         names.arg=c('Sept','Oct','Nov','Dec','Jan 2014','Feb','Mar',
                     'Apr','May','June','July','Aug','Sept','Oct',
                     'Nov','Dec','Jan 2015','Feb'),cex.names=1.7)
-               
+lines(x=c(1.3,1.3),y=c(-10,300),lty=2,lwd=2) # SWM
+lines(x=c(3.7,3.7),y=c(-10,300),lty=2,lwd=2) # FTM
+lines(x=c(8.5,8.5),y=c(-10,300),lty=2,lwd=2) # NEM
+lines(x=c(10.9,10.9),y=c(-10,300),lty=2,lwd=2) # STM
+lines(x=c(15.7,15.7),y=c(-10,300),lty=2,lwd=2) # SWM
+lines(x=c(18.1,18.1),y=c(-10,300),lty=2,lwd=2) # FTM
 minor.tick(ny=2,nx=1,tick.ratio=0.5)
 box()
-
-#plot(data_group2$date,data_group2$rain, 
-#     type = 'h', ylim=c(0,250),xlab="",
-#     ylab= '',cex.lab=1.5,xaxt='n',yaxt='n',cex.axis=1.7,lwd=10)
-
-#timestamp <- as.POSIXct(c('2013-09-01 ','2013-10-01 ','2013-11-01 ',
-#                          '2013-12-01 ','2014-01-01 ','2014-02-01 ',
-#                          '2014-03-01 ','2014-04-01 ','2014-05-01 ',
-#                          '2014-06-01 ','2014-07-01 ','2014-08-01 ',
-#                          '2014-09-01 ','2014-10-01 ','2014-11-01 ',
-#                          '2014-12-01 ','2015-01-01 ','2015-02-01 '))
-
-#axis(side=2, c(0,50,100,150,200,250),cex.axis=1.7)
-#axis.POSIXct(side=1, data_group2$date,
-#             at=timestamp,
-#                  labels = c('Sept','Oct','Nov','Dec','Jan 2014','Feb','Mar',
-#                             'Apr','May','June','July','Aug','Sept','Oct',
-#                             'Nov','Dec','Jan 2015','Feb') ,cex.axis=1.57)
+# Annotate on top of plot the monsoons
+mtext(side=3,'SWM',line=0.5, adj = 0.025,cex=2)
+mtext(side=3,'FTM',line=0.5,adj = 0.1,cex=2)
+mtext(side=3,'NEM',line=0.5, adj=0.26,cex=2)
+mtext(side=3,'STM',line=0.5,adj = 0.44,cex=2)
+mtext(side=3,'SWM',line=0.5, adj = 0.6,cex=2)
+mtext(side=3,'FTM',line=0.5, adj = 0.78,cex=2)
+mtext(side=3,'NEM',line=0.5, adj = 0.95,cex=2)
 
 mtext("Month", side=1, line = 2, outer=TRUE, at=0.5,cex = 1.7)
 mtext("Monthly cummulative precipitation (mm)", side=2, line = 2,outer=TRUE, 

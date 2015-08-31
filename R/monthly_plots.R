@@ -78,7 +78,7 @@ rm(mat3,x,y)
 jpeg(file="figs/CO2_H_LE.jpg",width=3600,height=3060,res=360, quality=100)
 mat4 <- matrix(c(1,2,3),nrow=3, ncol=1)
 layout(mat4, heights = rep.int(8,nrow(mat4)), respect = FALSE)
-par(family="serif", mar=c(3,2.4,0,0), tcl=-0.6, mgp=c(1,0.8,0),omi=c(0.35,0.35,0.1,0.35),lwd=1.7)
+par(family="serif", mar=c(3,2.4,0,0), tcl=-0.6, mgp=c(1,0.8,0),omi=c(0.4,0.35,0.35,0.35),lwd=1.7)
 
 s <- barplot(data_group_a$gco2_flux,lwd=1.5,ylim=c(-8,0),ylab =NA, xlab=NA,cex.axis=1.8,xaxt='n',col=adjustcolor("black",alpha.f=0),xpd=FALSE)
 axis(side=1,at=s,labels=FALSE)
@@ -86,6 +86,19 @@ text(-0.2,-0.8,"a)",cex=2.2)
 mtext(expression(paste('CO'['2'],' flux (',mu,'mol ',' m'^{'-2'}, ' s'^{'-1'},')')),
       side=2,line=2.5,outer= F,at=-8.2,adj=0,family="serif",cex=1.5)
 box()
+lines(x=c(1.3,1.3),y=c(-10,300),lty=2,lwd=2) # SWM
+lines(x=c(3.7,3.7),y=c(-10,300),lty=2,lwd=2) # FTM
+lines(x=c(8.5,8.5),y=c(-10,300),lty=2,lwd=2) # NEM
+lines(x=c(10.9,10.9),y=c(-10,300),lty=2,lwd=2) # STM
+lines(x=c(15.7,15.7),y=c(-10,300),lty=2,lwd=2) # SWM
+lines(x=c(18.1,18.1),y=c(-10,300),lty=2,lwd=2) # FTM
+mtext(side=3,'SWM',line=0.5, adj = 0.002,cex=2)
+mtext(side=3,'FTM',line=0.5,adj = 0.11,cex=2)
+mtext(side=3,'NEM',line=0.5, adj=0.26,cex=2)
+mtext(side=3,'STM',line=0.5,adj = 0.44,cex=2)
+mtext(side=3,'SWM',line=0.5, adj = 0.6,cex=2)
+mtext(side=3,'FTM',line=0.5, adj = 0.78,cex=2)
+mtext(side=3,'NEM',line=0.5, adj = 0.95,cex=2)
 
 t <- barplot(data_group_a$gLE,lwd=1.5, ylim=c(0,150),ylab =NA,xlab= NA,cex.axis=1.8,col=adjustcolor("black",alpha.f=0),xpd=FALSE)
 axis(side=1,at=t,labels=FALSE)
@@ -93,7 +106,12 @@ text(-0.2,130,"b)",cex=2.2)
 mtext(expression(paste('LE',' (','W',' m'^{'-2'},')'))
       ,side=2,line=2.6,outer= F,at=38,adj=0,family="serif",cex=1.5)
 box()
-
+lines(x=c(1.3,1.3),y=c(-10,300),lty=2,lwd=2) # SWM
+lines(x=c(3.7,3.7),y=c(-10,300),lty=2,lwd=2) # FTM
+lines(x=c(8.5,8.5),y=c(-10,300),lty=2,lwd=2) # NEM
+lines(x=c(10.9,10.9),y=c(-10,300),lty=2,lwd=2) # STM
+lines(x=c(15.7,15.7),y=c(-10,300),lty=2,lwd=2) # SWM
+lines(x=c(18.1,18.1),y=c(-10,300),lty=2,lwd=2) # FTM
 u <- barplot(data_group_a$gH,lwd=1.5,ylim=c(0,40),ylab =NA, xlab=NA,cex.axis=1.8,col=adjustcolor("black",alpha.f=0),xpd=FALSE)
 axis(side=1,at=u,labels=c('Sept','Oct','Nov','Dec','Jan','Feb','Mar','Apr','May','June','July','Aug','Sept','Oct','Nov','Dec','Jan','Feb'),cex.axis=2.1,las=2)
 text(-0.2,35.5,"c)",cex=2.2)
@@ -101,6 +119,12 @@ mtext(expression(paste('H',' (','W',' m'^{'-2'},')'))
       ,side=2,line=2.5,outer= F,at=11,adj=0,family="serif",cex=1.5)
 mtext("Month",side=1,line=4.7,outer= F,at=9,adj=0,family="serif",cex=1.6)
 box()
+lines(x=c(1.3,1.3),y=c(-10,300),lty=2,lwd=2) # SWM
+lines(x=c(3.7,3.7),y=c(-10,300),lty=2,lwd=2) # FTM
+lines(x=c(8.5,8.5),y=c(-10,300),lty=2,lwd=2) # NEM
+lines(x=c(10.9,10.9),y=c(-10,300),lty=2,lwd=2) # STM
+lines(x=c(15.7,15.7),y=c(-10,300),lty=2,lwd=2) # SWM
+lines(x=c(18.1,18.1),y=c(-10,300),lty=2,lwd=2) # FTM
 
 dev.off()
 rm(mat4,s,t,u)
