@@ -163,3 +163,11 @@ mtext("Hour (local time)",side=1.5,line=2.4,outer= F,at=8.5,adj=0,family="serif"
 
 dev.off()
 rm(mat4)
+
+#### Wind rose plot for different Monsoon seasons ####
+jpeg(file="figs/windrose.jpg",width=3060,height=3060,res=360, quality=100)
+#par(family="serif", mar=c(0,0,0,0), omi=c(0,0,0,0))
+
+windRose(df_EC2_monsoon,ws='wind_speed',wd='wind_dir',paddle = FALSE,
+         type='monsoon',annotate = FALSE,fontsize=18)
+dev.off()
