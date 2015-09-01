@@ -171,3 +171,97 @@ jpeg(file="figs/windrose.jpg",width=3060,height=3060,res=360, quality=100)
 windRose(df_EC2_monsoon,ws='wind_speed',wd='wind_dir',paddle = FALSE,
          type='monsoon',annotate = FALSE,fontsize=18)
 dev.off()
+
+#### Fig. 3 a) Diurnal plots #####
+
+jpeg(filename = "/Users/Yusri/Documents/Work/Data analysis/MPOB/figs/diurnal_p.jpeg", width=3600, height= 3060,res=360,family='serif')
+mat4 <- matrix(c(1:6),nrow=3, ncol=2)
+layout(mat4, heights = rep.int(10,nrow(mat4)), respect = FALSE)
+par(family="serif", tcl=-0.6, mgp=c(1,1,0), omi=c(0.1,0.1,0.1,0.1))
+
+
+# a) Plot 1 (air temp canopy)
+par(mar=c(2,5.5,0,0))
+plot(data_group1$hour,data_group1$ta_3,type='l',ylim=c(20,36),
+     xlab='',ylab=expression(paste('T'['canopy'],' (',degree,'C)')),
+     lwd=2,xaxt='n',yaxt ='n',cex.axis=1.7,cex.lab = 2.4,mgp = c(3, 1, 0))
+x <- data_group1$hour
+y_down <- data_group1$ta3_down
+y_up <- data_group1$ta3_up
+polygon(c(x, rev(x)), c(y_up, rev(y_down)),
+        col=adjustcolor("grey",alpha.f=0.5), border = NA)
+text(0,35.8,"a)",cex = 2)     
+minor.tick(ny=2,nx=5,tick.ratio=0.5)
+axis(side=2,at=c(20,25,30,35),cex.axis=1.7)
+axis(side=1,at=c(0,3,6,9,12,15,18,21,24),cex.axis=1.7,labels=F)
+
+# b) Plot 3 (wind speed)
+par(mar=c(3,5.5,0,0))
+plot(data_group1$hour, data_group1$ws,type='l',ylim=c(0,5),xlab='',
+     ylab= (expression(paste('U (m s', ' '^{'-1'}, ')'))),
+     lwd=2,xaxt='n',yaxt='n',cex.axis=1.7,cex.lab = 2.4,mgp = c(3, 1, 0))
+x <- data_group1$hour
+y_down <- data_group1$ws_down
+y_up <- data_group1$ws_up
+polygon(c(x, rev(x)), c(y_up, rev(y_down)),
+        col=adjustcolor("grey",alpha.f=0.5), border = NA)
+text(0,4.9,"b)",cex = 2)       
+minor.tick(ny=2,nx=5,tick.ratio=0.5)
+axis(side=2,at=c(0,1,2,3,4,5),cex.axis=1.7)
+axis(side=1,at=c(0,3,6,9,12,15,18,21,24),cex.axis=1.7,labels=F)
+
+# c) Plot 5 (Net radiation)
+par(mar=c(4,5.5,0,0))
+plot(data_group1$hour,data_group1$rn,type='l',ylim=c(-100,800),
+     xlab="Hour (local time)",
+     ylab= (expression(paste('Rn', ' (W m'^{'-2'}, ')'))),
+     lwd=2,xaxt='n',yaxt='n',cex.axis=1.7,cex.lab = 2.4,mgp = c(3, 1, 0))
+x <- data_group1$hour
+y_down <- data_group1$rn_down
+y_up <- data_group1$rn_up
+polygon(c(x, rev(x)), c(y_up, rev(y_down)),
+        col=adjustcolor("grey",alpha.f=0.5), border = NA)
+text(0,790,"c)",cex = 2)       
+minor.tick(ny=2,nx=5,tick.ratio=0.5)
+axis(side=2,at=c(-100,200,400,600,800),cex.axis=1.7)
+axis(side=1,at=c(0,3,6,9,12,15,18,21,24),cex.axis=1.7)
+
+
+# d) Plot 2 (air temp surface layer, SL)
+par(mar=c(2,5.5,0,0))
+plot(data_group1$hour,data_group1$ta_5,type='l',ylim=c(20,36),xlab="",
+     ylab=expression(paste('T'['SL'],' (',degree,'C)')),
+     lwd=2,xaxt='n',yaxt ='n',cex.axis=1.7,cex.lab = 2.4,mgp = c(3, 1, 0))
+x <- data_group1$hour
+y_down <- data_group1$ta5_down
+y_up <- data_group1$ta5_up
+polygon(c(x, rev(x)), c(y_up, rev(y_down)),
+        col=adjustcolor("grey",alpha.f=0.5), border = NA)
+text(0,35.8,"d)",cex = 2)     
+minor.tick(ny=2,nx=5,tick.ratio=0.5)
+axis(side=2,at=c(20,25,30,35),cex.axis=1.7)
+axis(side=1,at=c(0,3,6,9,12,15,18,21,24),cex.axis=1.7,labels=F)
+
+# e) Plot 4 (Vapor pressure deficit, VPD)
+par(mar=c(3,5.5,0,0))
+plot(data_group1$hour, data_group1$vpd,type='l',ylim=c(-100,2300),
+     xlab='',
+     ylab='VPD (Pa)',lwd=2,xaxt='n',yaxt='n',cex.axis=1.7,cex.lab = 2.4,
+     mgp = c(3, 1, 0)) 
+x <- data_group1$hour
+y_down <- data_group1$vpd_down
+y_up <- data_group1$vpd_up
+polygon(c(x, rev(x)), c(y_up, rev(y_down)),
+        col=adjustcolor("grey",alpha.f=0.5), border = NA)
+text(0,2270,"e)",cex = 2)
+mtext(side=1,'Hour (local time)',cex=1.7,line=3)
+minor.tick(ny=2,nx=5,tick.ratio=0.5)
+axis(side=2,at=c(0,1000,2000),cex.axis=1.7)
+axis(side=1,at=c(0,3,6,9,12,15,18,21,24),cex.axis=1.7)
+
+# clean global env.
+rm(x,y_down,y_up)
+
+dev.off()
+
+
